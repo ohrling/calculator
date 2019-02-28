@@ -15,4 +15,16 @@ public class CalculatorTests {
         // Assert
         assertEquals("3+4", acutal);
     }
+
+    @Test
+    public void additionTest() {
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        double actual = calc.addition(3.0,4.0);
+
+        // Assert
+        assertEquals(7d,actual,0.111);
+    }
 }
