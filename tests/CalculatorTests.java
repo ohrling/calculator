@@ -17,6 +17,17 @@ public class CalculatorTests {
     }
 
     @Test
+    public void calculateExpressionSingleAddition_Test() {
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3+4");
+
+        assertEquals("7",actual);
+    }
+
+    @Test
     public void additionTest() {
         // Arrange
         Calculator calc = new Calculator();
