@@ -27,12 +27,20 @@ public class CalculatorTests {
         // Act
         String actual = calc.calculateExpression("3+4");
 
+        // Assert
         assertEquals("7.0",actual);
     }
 
     @Test
     public void calculateExpression_MultiAddition_Test() {
-        fail("3+4+3");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3+4+3");
+
+        // Assert
+        assertEquals("10.0", actual);
     }
 
     @Ignore
