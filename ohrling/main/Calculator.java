@@ -16,6 +16,6 @@ public class Calculator {
     }
 
     public Double convertStringToDouble(String s) {
-        return null;
+        return Double.parseDouble(s);
     }
 }
