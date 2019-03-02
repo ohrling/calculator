@@ -7,7 +7,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 public class CalculatorTests {
     // Tests for the calculateExpression method
-    @Ignore
     @Test
     public void calculateExpression_StringToDouble_Test() {
         // Arrange
@@ -31,7 +30,6 @@ public class CalculatorTests {
         assertEquals("7.0",actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiAddition_Test() {
         fail("3+4+3");
