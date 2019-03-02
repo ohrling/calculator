@@ -2,6 +2,7 @@
 import main.Calculator;
 import org.junit.Assert;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -226,7 +227,7 @@ public class CalculatorTests {
     }*/
 
     // Test for converting
-    @Test
+    @Test(expected = NullPointerException.class)
     public void convertStringToDouble_Test() {
         // Arrange
         Calculator calc = new Calculator();

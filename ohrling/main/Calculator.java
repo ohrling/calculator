@@ -16,6 +16,10 @@ public class Calculator {
     }
 
     public Double convertStringToDouble(String s) {
-        return Double.parseDouble(s);
+        try {
+            return Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }
