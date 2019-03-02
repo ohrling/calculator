@@ -2,8 +2,13 @@ package main;
 
 public class Calculator {
     public String calculateExpression(String s) {
-        String[] splitted = s.split("([+])");
-        Double sum = addition(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
+        Double sum;
+        if(s.contains("+")) {
+            String[] splitted = s.split("([+])");
+            sum = addition(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
+        } else {
+            sum = convertStringToDouble(s);
+        }
         return sum.toString();
     }
 
