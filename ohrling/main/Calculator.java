@@ -3,7 +3,7 @@ package main;
 public class Calculator {
     public String calculateExpression(String s) {
         String[] splitted = s.split("([+])");
-        Double sum = addition((double)splitted[0], (double)splitted[1].charAt(0));
+        Double sum = null;//addition((double)splitted[0], (double)splitted[1].charAt(0));
         return sum.toString();
     }
 
@@ -13,5 +13,9 @@ public class Calculator {
 
     public double subraction(double d1, double d2) {
         return 0;
+    }
+
+    public Double convertStringToDouble(String s) {
+        return null;
     }
 }
