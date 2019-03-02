@@ -2,13 +2,11 @@
 import main.Calculator;
 import org.junit.Assert;
 import org.junit.Ignore;
-import org.junit.Rule;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 public class CalculatorTests {
     // Tests for the calculateExpression method
-    @Ignore
     @Test
     public void calculateExpression_StringToDouble_Test() {
         // Arrange

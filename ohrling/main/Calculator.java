@@ -2,8 +2,7 @@ package main;
 
 public class Calculator {
     public String calculateExpression(String s) {
-        String[] splitted = s.split("([+])");
-        Double sum = null;//addition((double)splitted[0], (double)splitted[1].charAt(0));
+        Double sum;
         return sum.toString();
     }
 
