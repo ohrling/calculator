@@ -19,7 +19,6 @@ public class CalculatorTests {
         assertEquals("3.0", acutal);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_SingleAddition_Test() {
         // Arrange
