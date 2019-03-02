@@ -2,10 +2,16 @@ package main;
 
 public class Calculator {
     public String calculateExpression(String s) {
-        return s;
+        String[] splitted = s.split("([+])");
+        Double sum = addition((double)splitted[0], (double)splitted[1].charAt(0));
+        return sum.toString();
     }
 
     public double addition(double d1, double d2) {
         return d1 + d2;
+    }
+
+    public double subraction(double d1, double d2) {
+        return 0;
     }
 }
