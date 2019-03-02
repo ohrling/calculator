@@ -2,7 +2,7 @@ package main;
 
 public class Calculator {
     public String calculateExpression(String s) {
-        Double sum;
+        Double sum = convertStringToDouble(s);
         return sum.toString();
     }
 

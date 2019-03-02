@@ -16,7 +16,7 @@ public class CalculatorTests {
         String acutal = calc.calculateExpression("3");
 
         // Assert
-        assertEquals("3", acutal);
+        assertEquals("3.0", acutal);
     }
 
     @Ignore
