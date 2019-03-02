@@ -1,5 +1,6 @@
 
 import main.Calculator;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -12,10 +13,10 @@ public class CalculatorTests {
         Calculator calc = new Calculator();
 
         // Act
-        String acutal = calc.calculateExpression("3+4");
+        String acutal = calc.calculateExpression("3");
 
         // Assert
-        assertEquals("3+4", acutal);
+        assertEquals("3", acutal);
     }
 
     @Test
@@ -221,4 +222,17 @@ public class CalculatorTests {
         // Assert
         // Test får exception!
     }*/
+
+    // Test for converting
+    @Test
+    public void convertStringToDouble_Test() {
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        Double actual = calc.convertStringToDouble("3");
+
+        // Assert
+        assertEquals(3d, actual, 0.111);
+    }
 }
