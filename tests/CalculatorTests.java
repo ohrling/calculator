@@ -232,7 +232,7 @@ public class CalculatorTests {
         Calculator calc = new Calculator();
 
         // Act
-        Double actual = calc.convertStringToDouble("3");
+        Double actual = calc.convertStringToDouble("h");
 
         // Assert
         assertEquals(3d, actual, 0.111);
