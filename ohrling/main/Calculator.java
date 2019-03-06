@@ -15,7 +15,7 @@ public class Calculator {
         } else if(s.contains("-")) {
             splitted = s.split("([-])");
             for (String num :
-            splitted) {
+                    splitted) {
                 if(!num.equalsIgnoreCase("-")) {
                     if (sum == 0.0) {
                         sum = convertStringToDouble(num);
@@ -26,7 +26,15 @@ public class Calculator {
             }
          }else if(s.contains("*")) {
             splitted = s.split("([*])");
-            sum = multiplication(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
+            for(int i = 0; i < splitted.length; i++) {
+                if(!splitted[i].equalsIgnoreCase("*")){
+                    if(i == 0) {
+                        sum = convertStringToDouble(splitted[i]);
+                    } else {
+                        sum = multiplication(sum, convertStringToDouble(splitted[i]));
+                    }
+                }
+            }
         }  else {
             sum = convertStringToDouble(s);
         }
