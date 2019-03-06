@@ -35,7 +35,10 @@ public class Calculator {
                     }
                 }
             }
-        }  else {
+        } else if(s.contains("/")) {
+            splitted = s.split("([/])");
+            sum = division(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
+        } else {
             sum = convertStringToDouble(s);
         }
         return sum.toString();
