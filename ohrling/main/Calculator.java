@@ -15,7 +15,7 @@ public class Calculator {
             }
         } else if(s.contains("-")) {
             splitted = s.split("([-])");
-            sum = subraction(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
+            sum = subtraction(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
         } else {
             sum = convertStringToDouble(s);
         }
@@ -26,7 +26,7 @@ public class Calculator {
         return d1 + d2;
     }
 
-    public double subraction(double d1, double d2) {
+    public double subtraction(double d1, double d2) {
         return d1-d2;
     }
 

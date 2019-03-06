@@ -1,6 +1,5 @@
 
 import main.Calculator;
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -55,10 +54,16 @@ public class CalculatorTests {
         assertEquals("2.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiSubtraction_Test() {
-        fail("4-2-1");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("6-2-2");
+
+        // Assert
+        assertEquals("2.0", actual);
     }
 
     @Ignore
@@ -193,7 +198,7 @@ public class CalculatorTests {
         Calculator calc = new Calculator();
 
         // Act
-        double actual = calc.subraction(4.0, 3.0);
+        double actual = calc.subtraction(4.0, 3.0);
 
         // Assert
         assertEquals(1d, actual, 0.111);
