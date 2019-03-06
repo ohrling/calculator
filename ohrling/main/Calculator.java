@@ -15,7 +15,17 @@ public class Calculator {
             }
         } else if(s.contains("-")) {
             splitted = s.split("([-])");
-            sum = subtraction(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
+            for (String num :
+            splitted) {
+                if(num.equalsIgnoreCase("-")) {
+                } else {
+                    if (sum == 0.0) {
+                        sum = convertStringToDouble(num);
+                    } else {
+                        sum = subtraction(sum, convertStringToDouble(num));
+                    }
+                }
+            }
         } else {
             sum = convertStringToDouble(s);
         }
