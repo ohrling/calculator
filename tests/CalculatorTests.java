@@ -66,10 +66,16 @@ public class CalculatorTests {
         assertEquals("2.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_SingleMultiplication_Test() {
-        fail("4*3");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("2*2");
+
+        // Assert
+        assertEquals("4.0", actual);
     }
 
     @Ignore
@@ -193,7 +199,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void subractionTest() {
+    public void subtractionTest() {
         // Arrange
         Calculator calc = new Calculator();
 
