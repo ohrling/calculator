@@ -264,8 +264,7 @@ public class CalculatorTests {
         assertEquals(2d, actual, 0.111);
     }
 
-    /*
-    @Ignore
+    @Test(expected = ArithmeticException.class)
     public void divisionZeroTest() {
         // Arrange
         Calculator calc = new Calculator();
@@ -274,8 +273,8 @@ public class CalculatorTests {
         double actual = calc.division(4.0,0.0);
 
         // Assert
-        // Test får exception!
-    }*/
+        assertEquals(3d,actual, 0.111);
+    }
 
     // Test for converting
     @Test(expected = NullPointerException.class)
