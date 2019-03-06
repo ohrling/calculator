@@ -8,8 +8,7 @@ public class Calculator {
             splitted = s.split("([+])");
             for (String num :
                     splitted) {
-                if(num.equalsIgnoreCase("+")) {
-                } else {
+                if(!num.equalsIgnoreCase("+")) {
                     sum = addition(sum, convertStringToDouble(num));
                 }
             }
@@ -17,8 +16,7 @@ public class Calculator {
             splitted = s.split("([-])");
             for (String num :
             splitted) {
-                if(num.equalsIgnoreCase("-")) {
-                } else {
+                if(!num.equalsIgnoreCase("-")) {
                     if (sum == 0.0) {
                         sum = convertStringToDouble(num);
                     } else {
