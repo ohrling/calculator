@@ -23,7 +23,7 @@ public class Calculator {
     }
 
     public double subraction(double d1, double d2) {
-        return 0;
+        return d1-d2;
     }
 
     public Double convertStringToDouble(String s) {
