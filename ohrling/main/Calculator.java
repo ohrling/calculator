@@ -3,14 +3,20 @@ package main;
 public class Calculator {
     public String calculateExpression(String s) {
         Double sum = 0.0;
+        String[] splitted;
         if(s.contains("+")) {
-            String[] splitted = s.split("(?<=[+])|(?=[+])");
+            splitted = s.split("([+])");
             for (String num :
                     splitted) {
                 if(num.equalsIgnoreCase("+")) {
                 } else {
                     sum = addition(sum, convertStringToDouble(num));
                 }
+            }
+        } else if(s.contains("-")) {
+            splitted = s.split("([-])");
+            if(sum == 0.0){
+                sum = subraction(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
             }
         } else {
             sum = convertStringToDouble(s);
