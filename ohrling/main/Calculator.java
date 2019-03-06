@@ -15,9 +15,7 @@ public class Calculator {
             }
         } else if(s.contains("-")) {
             splitted = s.split("([-])");
-            if(sum == 0.0){
-                sum = subraction(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
-            }
+            sum = subraction(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
         } else {
             sum = convertStringToDouble(s);
         }
