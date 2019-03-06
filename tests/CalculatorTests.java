@@ -90,10 +90,16 @@ public class CalculatorTests {
         assertEquals("24.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_SingleDivision_Test() {
-        fail("4/2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4/2");
+
+        // Assert
+        assertEquals("2.0", actual);
     }
 
     @Ignore
@@ -213,6 +219,11 @@ public class CalculatorTests {
         fail("3+4(4/2)/2");
     }
 
+    @Ignore
+    @Test
+    public void calculateExpression_InfiniteResult_Test() {
+        fail("10/3");
+    }
 
 
     // Tests for the separate math-methods
