@@ -78,10 +78,40 @@ public class CalculatorTests {
         assertEquals("4.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiMultiplication_Test() {
-        fail("4*3*2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4*3*2");
+
+        // Assert
+        assertEquals("24.0", actual);
+    }
+
+    @Ignore
+    @Test
+    public void calculateExpression_SingleDivision_Test() {
+        fail("4/2");
+    }
+
+    @Ignore
+    @Test
+    public void calculateExpression_MultiDivision_Test() {
+        fail("8/4/2");
+    }
+
+    @Ignore
+    @Test
+    public void calculateExpression_SingleModulus_Test() {
+        fail("9%2");
+    }
+
+    @Ignore
+    @Test
+    public void calculateExpression_MultiModulus_Test() {
+        fail("15%2%2");
     }
 
     @Ignore
