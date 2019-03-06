@@ -43,10 +43,16 @@ public class CalculatorTests {
         assertEquals("10.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_SingleSubtraction_Test() {
-        fail("4-2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4-2");
+
+        // Assert
+        assertEquals("2.0", actual);
     }
 
     @Ignore
