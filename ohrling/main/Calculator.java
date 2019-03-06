@@ -60,4 +60,8 @@ public class Calculator {
     public double multiplication(double d1, double d2) {
         return d1*d2;
     }
+
+    public double division(double d1, double d2) {
+        return 0;
+    }
 }

@@ -252,8 +252,7 @@ public class CalculatorTests {
         assertEquals(12d, actual, 0.111);
     }
 
-    /*
-    @Ignore
+    @Test
     public void divisionTest() {
         // Arrange
         Calculator calc = new Calculator();
@@ -265,6 +264,7 @@ public class CalculatorTests {
         assertEquals(2d, actual, 0.111);
     }
 
+    /*
     @Ignore
     public void divisionZeroTest() {
         // Arrange
