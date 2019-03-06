@@ -181,7 +181,6 @@ public class CalculatorTests {
         assertEquals(7d,actual,0.111);
     }
 
-    @Ignore
     @Test
     public void subractionTest() {
         // Arrange
