@@ -62,6 +62,10 @@ public class Calculator {
     }
 
     public double division(double d1, double d2) {
-        return d1/d2;
+        if(d2 != 0) {
+            return d1 / d2;
+        } else {
+            throw new ArithmeticException();
+        }
     }
 }
