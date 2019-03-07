@@ -82,9 +82,7 @@ public class Calculator {
                 }
                 String parenthesisSum = calculateExpression(generatedExpression.toString());
                 splitted.set(parenthesisStartPosition, parenthesisSum);
-                for(int i = parenthesisEndPosition; i > parenthesisStartPosition; i--) {
-                    splitted.remove(i);
-                }
+                splitted.subList(parenthesisStartPosition + 1, parenthesisEndPosition + 1).clear();
             } else if(prioPosition != null || !(prioPosition == -1)){
                 if (splitted.get(prioPosition).equalsIgnoreCase("*"))
                     tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
