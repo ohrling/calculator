@@ -150,7 +150,6 @@ public class CalculatorTests {
         assertEquals("6.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiplicationAddition_Test() {
         fail("4*3+3");
