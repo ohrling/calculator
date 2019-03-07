@@ -237,7 +237,6 @@ public class CalculatorTests {
         assertEquals("6.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_DivisionMultiplication_Test() {
         fail("4/2*3");
