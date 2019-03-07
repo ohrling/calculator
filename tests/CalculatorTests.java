@@ -270,7 +270,7 @@ public class CalculatorTests {
         String actual = calc.calculateExpression("3+(3+4)");
 
         // Assert
-        assertEquals("10", actual);
+        assertEquals("10.0", actual);
     }
 
     @Ignore
