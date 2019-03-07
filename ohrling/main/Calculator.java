@@ -1,19 +1,31 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Calculator {
     public String calculateExpression(String expression) {
         Double sum = null;
         Double d2 = null;
         char term = '!';
+        int multiplicationPosition = -1;
         String regex = "(?<=[-+*/%])|(?=[-+*/%])";
-        String[] splitted = expression.split(regex);
-        for (int i = 0; i < splitted.length; i++) {
+        List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
+        if(expression.contains("*")) {
+            multiplicationPosition = splitted.indexOf("*");
+            Double tempSum = multiplication(convertStringToDouble(splitted.get(multiplicationPosition - 1)), convertStringToDouble(splitted.get(multiplicationPosition + 1)));
+            splitted.remove(multiplicationPosition + 1);
+            splitted.remove( multiplicationPosition);
+            splitted.set(multiplicationPosition - 1, tempSum.toString());
+        }
+        for (int i = 0; i < splitted.size(); i++) {
             if(sum == null)
-                sum = convertStringToDouble(splitted[i]);
+                sum = convertStringToDouble(splitted.get(i));
             else if(d2 == null)
-                d2 = convertStringToDouble(splitted[i]);
+                d2 = convertStringToDouble(splitted.get(i));
             if(sum == null || d2 == null)
-                term = splitted[i].charAt(0);
+                term = splitted.get(i).charAt(0);
             if(sum != null && d2 != null && term != '!') {
                 switch (term) {
                     case '+':
