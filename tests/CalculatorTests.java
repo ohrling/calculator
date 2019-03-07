@@ -225,10 +225,16 @@ public class CalculatorTests {
         assertEquals("5.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiplicationDivision_Test() {
-        fail("3*4/2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3*4/2");
+
+        // Assert
+        assertEquals("6.0", actual);
     }
 
     @Ignore
