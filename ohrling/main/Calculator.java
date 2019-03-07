@@ -9,39 +9,13 @@ public class Calculator {
         Double sum = null;
         Double d2 = null;
         char term = '!';
-        String[] prioritizedTerms = new String[] {"*", "/", "%"};
         String regex = "(?<=[-+*/%])|(?=[-+*/%])";
         List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
         if (expression.contains("(")) {
             return "10.0";
         }
         if(splitted.contains("*") || splitted.contains("/") || splitted.contains("%")) {
-            while (splitted.size() > 3) {
-                Integer prioPosition = null;
-                Double tempSum = null;
-                for (String tempTerm :
-                        prioritizedTerms) {
-                    if (prioPosition == null)
-                        prioPosition = splitted.indexOf(tempTerm);
-                    else if(prioPosition > splitted.indexOf(tempTerm) && splitted.indexOf(tempTerm) != -1 || prioPosition == -1)
-                        prioPosition = splitted.indexOf(tempTerm);
-                }
-
-                if (splitted.get(prioPosition).equalsIgnoreCase("*"))
-                    tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-                else if (splitted.get(prioPosition).equalsIgnoreCase("/"))
-                    tempSum = division(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-                else if (splitted.get(prioPosition).equalsIgnoreCase("%"))
-                    tempSum = modulus(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-
-                splitted.remove(prioPosition + 1);
-
-                if (convertStringToDouble(splitted.get(prioPosition)) == null)
-                    splitted.remove(prioPosition.intValue());
-                else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
-                    splitted.set(prioPosition, "+");
-                splitted.set(prioPosition - 1, tempSum.toString());
-            }
+            splitted = calculatePrioritizedExpressions(splitted);
         }
         for (int i = 0; i < splitted.size(); i++) {
             if(sum == null)
@@ -72,6 +46,37 @@ public class Calculator {
             }
         }
         return sum.toString();
+    }
+
+    private List<String> calculatePrioritizedExpressions(List<String> splitted) {
+        String[] prioritizedTerms = new String[] {"*", "/", "%"};
+        while (splitted.size() > 3) {
+            Integer prioPosition = null;
+            Double tempSum = null;
+            for (String tempTerm :
+                    prioritizedTerms) {
+                if (prioPosition == null)
+                    prioPosition = splitted.indexOf(tempTerm);
+                else if(prioPosition > splitted.indexOf(tempTerm) && splitted.indexOf(tempTerm) != -1 || prioPosition == -1)
+                    prioPosition = splitted.indexOf(tempTerm);
+            }
+
+            if (splitted.get(prioPosition).equalsIgnoreCase("*"))
+                tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+            else if (splitted.get(prioPosition).equalsIgnoreCase("/"))
+                tempSum = division(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+            else if (splitted.get(prioPosition).equalsIgnoreCase("%"))
+                tempSum = modulus(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+
+            splitted.remove(prioPosition + 1);
+
+            if (convertStringToDouble(splitted.get(prioPosition)) == null)
+                splitted.remove(prioPosition.intValue());
+            else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
+                splitted.set(prioPosition, "+");
+            splitted.set(prioPosition - 1, tempSum.toString());
+        }
+        return splitted;
     }
 
     public double addition(double d1, double d2) {
