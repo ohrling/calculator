@@ -190,7 +190,14 @@ public class CalculatorTests {
     @Test
     public void calculateExpression_SubtractionMultiplication_Test() {
         // Remember Multiplication goes first!
-        fail("2-4*3");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("2-4*3");
+
+        // Assert
+        assertEquals("-10.0", actual);
     }
 
     @Ignore
