@@ -175,10 +175,15 @@ public class CalculatorTests {
         assertEquals("15.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiplicationSubtraction_Test() {
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
         fail("4*3-2");
+
+        // Assert
     }
 
     @Ignore
