@@ -6,17 +6,20 @@ import java.util.List;
 
 public class Calculator {
     public String calculateExpression(String expression) {
+        Double sum;
+        String regex = "(?<=[-+*/%()])|(?=[-+*/%()])";
+        List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
+        if(expression.contains("*") || expression.contains("/") || expression.contains("%") || (expression.contains("(") && expression.contains(")"))) {
+            splitted = calculatePrioritizedExpressions(splitted);
+        }
+        sum = executeExpression(splitted);
+        return sum.toString();
+    }
+
+    private Double executeExpression(List<String> splitted) {
         Double sum = null;
         Double d2 = null;
         char term = '!';
-        String regex = "(?<=[-+*/%])|(?=[-+*/%])";
-        List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
-        if (expression.contains("(")) {
-            return "10.0";
-        }
-        if(splitted.contains("*") || splitted.contains("/") || splitted.contains("%")) {
-            splitted = calculatePrioritizedExpressions(splitted);
-        }
         for (int i = 0; i < splitted.size(); i++) {
             if(sum == null)
                 sum = convertStringToDouble(splitted.get(i));
@@ -45,11 +48,11 @@ public class Calculator {
                 d2 = null;
             }
         }
-        return sum.toString();
+        return sum;
     }
 
     private List<String> calculatePrioritizedExpressions(List<String> splitted) {
-        String[] prioritizedTerms = new String[] {"*", "/", "%"};
+        String[] prioritizedTerms = new String[] {"*", "/", "%", "(", ")"};
         while (splitted.size() > 3) {
             Integer prioPosition = null;
             Double tempSum = null;
