@@ -187,7 +187,6 @@ public class CalculatorTests {
         assertEquals("10.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_SubtractionMultiplication_Test() {
         // Remember Multiplication goes first!
