@@ -138,10 +138,16 @@ public class CalculatorTests {
         assertEquals("0.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_AdditionSubtraction_Test() {
-        fail("4+3-1");
+        // Assert
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4+3-1");
+
+        // Assert
+        assertEquals("6.0", actual);
     }
 
     @Ignore
