@@ -102,10 +102,16 @@ public class CalculatorTests {
         assertEquals("2.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiDivision_Test() {
-        fail("8/4/2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("8/4/2");
+
+        // Assert
+        assertEquals("1.0", actual);
     }
 
     @Ignore
