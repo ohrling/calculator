@@ -212,11 +212,17 @@ public class CalculatorTests {
         assertEquals("5.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_AdditionDivision_Test() {
         // Remember division calculates first!
-        fail("3+4/2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3+4/2");
+
+        // Assert
+        assertEquals("5.0", actual);
     }
 
     @Ignore
