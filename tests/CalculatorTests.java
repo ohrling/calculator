@@ -114,10 +114,16 @@ public class CalculatorTests {
         assertEquals("1.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_SingleModulus_Test() {
-        fail("9%2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("9%2");
+
+        // Assert
+        assertEquals("1.0", actual);
     }
 
     @Ignore
