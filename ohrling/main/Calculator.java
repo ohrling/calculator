@@ -81,6 +81,6 @@ public class Calculator {
     }
 
     public double modulus(double d1, double d2) {
-        return 0.0;
+        return d1%d2;
     }
 }
