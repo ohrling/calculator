@@ -239,14 +239,7 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_DivisionMultiplication_Test() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        String actual = calc.calculateExpression("4/2*3");
-
-        // Assert
-        assertEquals("6.0", actual);
+        fail("4/2*3");
     }
 
     @Test
