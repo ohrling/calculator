@@ -162,11 +162,17 @@ public class CalculatorTests {
         assertEquals("15.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_AdditionMultiplication_Test() {
         // Remember Multiplication goes first!
-        fail("3+4*3");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3+4*3");
+
+        // Assert
+        assertEquals("15.0", actual);
     }
 
     @Ignore
