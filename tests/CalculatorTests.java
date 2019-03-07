@@ -126,10 +126,16 @@ public class CalculatorTests {
         assertEquals("1.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_MultiModulus_Test() {
-        fail("15%2%2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("27%20%1");
+
+        // Assert
+        assertEquals("0.0", actual);
     }
 
     @Ignore
