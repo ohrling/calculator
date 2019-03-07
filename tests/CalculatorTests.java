@@ -303,6 +303,13 @@ public class CalculatorTests {
         fail("(4-3)(5+10)");
     }
 
+    // Limit tests
+    @Ignore
+    @Test
+    public void calculateExpression_MaxDoubleLength_Test() {
+        fail();
+    }
+
     @Ignore
     @Test
     public void calculateExpression_LongCalculation_Test() {
