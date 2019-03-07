@@ -140,7 +140,7 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_AdditionSubtraction_Test() {
-        // Assert
+        // Arrange
         Calculator calc = new Calculator();
 
         // Act
@@ -152,7 +152,14 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_MultiplicationAddition_Test() {
-        fail("4*3+3");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4*3+3");
+
+        // Assert
+        assertEquals("15.0", actual);
     }
 
     @Ignore
