@@ -138,7 +138,6 @@ public class CalculatorTests {
         assertEquals("0.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_AdditionSubtraction_Test() {
         // Assert
