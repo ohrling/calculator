@@ -181,9 +181,10 @@ public class CalculatorTests {
         Calculator calc = new Calculator();
 
         // Act
-        fail("4*3-2");
+        String actual = calc.calculateExpression("4*3-2");
 
         // Assert
+        assertEquals("10.0", actual);
     }
 
     @Ignore
