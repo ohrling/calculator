@@ -46,6 +46,9 @@ public class Calculator {
                     }
                 }
             }
+        } else if(s.contains("%")) {
+            splitted = s.split("([%])");
+            sum = modulus(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
         } else {
             sum = convertStringToDouble(s);
         }
