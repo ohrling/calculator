@@ -287,6 +287,19 @@ public class CalculatorTests {
         assertEquals(2d, actual, 0.111);
     }
 
+    @Test
+    public void modulusTest() {
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        double actual = calc.modulus(9.0, 2.0);
+
+        // Assert
+        assertEquals("1.0", actual, 0.111);
+    }
+
+    // Exception tests
     @Test(expected = ArithmeticException.class)
     public void divisionZeroTest() {
         // Arrange
