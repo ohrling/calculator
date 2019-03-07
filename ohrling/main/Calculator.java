@@ -9,25 +9,25 @@ public class Calculator {
         Double sum = null;
         Double d2 = null;
         char term = '!';
+        int prioPosition = -1;
         String regex = "(?<=[-+*/%])|(?=[-+*/%])";
         List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
-        List<Integer> prioPositions = new ArrayList<>();
-        for (String split :
-                splitted) {
-            if (split.equalsIgnoreCase("*") || split.equalsIgnoreCase("/"))
-                prioPositions.add(splitted.indexOf(split));
-        }
-        for (int position :
-                prioPositions) {
+        //List<Integer> prioPositions = new ArrayList<>();
+        while(splitted.size() > 3 && splitted.contains("*") || splitted.contains("/")){
             Double tempSum = null;
-            if(splitted.get(position).contains("*"))
-                tempSum = multiplication(convertStringToDouble(splitted.get(position - 1)), convertStringToDouble(splitted.get(position + 1)));
-            else if (splitted.get(position).contains("/"))
-                tempSum = division(convertStringToDouble(splitted.get(position - 1)), convertStringToDouble(splitted.get(position + 1)));
-            splitted.remove(position + 1);
-            splitted.remove( position);
-            splitted.set(position - 1, tempSum.toString());
-
+            prioPosition = splitted.indexOf("*");
+            if(prioPosition < splitted.indexOf("/"))
+                prioPosition = splitted.indexOf("/");
+            if(splitted.get(prioPosition).contains("*"))
+                tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+            else if (splitted.get(prioPosition).contains("/"))
+                tempSum = division(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+            splitted.remove(prioPosition + 1);
+            if(splitted.get(prioPosition + 1).equalsIgnoreCase("*"))
+                splitted.remove(prioPosition);
+            else if(!splitted.get(prioPosition -1).equalsIgnoreCase("+"))
+                splitted.set(prioPosition, "+");
+            splitted.set(prioPosition - 1, tempSum.toString());
         }
         for (int i = 0; i < splitted.size(); i++) {
             if(sum == null)
