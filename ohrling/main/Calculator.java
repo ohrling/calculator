@@ -79,4 +79,8 @@ public class Calculator {
             throw new ArithmeticException();
         }
     }
+
+    public double modulus(double d1, double d2) {
+        return 0.0;
+    }
 }

@@ -296,7 +296,7 @@ public class CalculatorTests {
         double actual = calc.modulus(9.0, 2.0);
 
         // Assert
-        assertEquals("1.0", actual, 0.111);
+        assertEquals(1d, actual, 0.111);
     }
 
     // Exception tests
