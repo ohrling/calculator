@@ -53,31 +53,53 @@ public class Calculator {
 
     private List<String> calculatePrioritizedExpressions(List<String> splitted) {
         String[] prioritizedTerms = new String[] {"*", "/", "%", "(", ")"};
+        List<String> parenthesisExpression = new ArrayList<>();
         while (splitted.size() > 3) {
             Integer prioPosition = null;
             Double tempSum = null;
+            Integer parenthesisStartPosition = null;
+            Integer parenthesisEndPosition = null;
+
             for (String tempTerm :
                     prioritizedTerms) {
-                if (prioPosition == null)
-                    prioPosition = splitted.indexOf(tempTerm);
-                else if(prioPosition > splitted.indexOf(tempTerm) && splitted.indexOf(tempTerm) != -1 || prioPosition == -1)
-                    prioPosition = splitted.indexOf(tempTerm);
+                if(tempTerm.equalsIgnoreCase("("))
+                    parenthesisStartPosition = splitted.indexOf(tempTerm);
+                else if(tempTerm.equalsIgnoreCase(")"))
+                    parenthesisEndPosition = splitted.indexOf(tempTerm);
+                else {
+                    if (prioPosition == null)
+                        prioPosition = splitted.indexOf(tempTerm);
+                    else if (prioPosition > splitted.indexOf(tempTerm) && splitted.indexOf(tempTerm) != -1 || prioPosition == -1)
+                        prioPosition = splitted.indexOf(tempTerm);
+                }
             }
+            if((prioPosition == null || prioPosition == -1) && (parenthesisStartPosition != null && parenthesisEndPosition != null)) {
+                parenthesisExpression.addAll(splitted.subList(parenthesisStartPosition + 1,parenthesisEndPosition));
+                StringBuilder generatedExpression = new StringBuilder();
+                for (String s :
+                        parenthesisExpression) {
+                    generatedExpression.append(s);
+                }
+                String parenthesisSum = calculateExpression(generatedExpression.toString());
+                splitted.set(parenthesisStartPosition, parenthesisSum);
+                for(int i = parenthesisEndPosition; i > parenthesisStartPosition; i--) {
+                    splitted.remove(i);
+                }
+            } else if(prioPosition != null || !(prioPosition == -1)){
+                if (splitted.get(prioPosition).equalsIgnoreCase("*"))
+                    tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+                else if (splitted.get(prioPosition).equalsIgnoreCase("/"))
+                    tempSum = division(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+                else if (splitted.get(prioPosition).equalsIgnoreCase("%"))
+                    tempSum = modulus(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+                splitted.remove(prioPosition + 1);
 
-            if (splitted.get(prioPosition).equalsIgnoreCase("*"))
-                tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-            else if (splitted.get(prioPosition).equalsIgnoreCase("/"))
-                tempSum = division(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-            else if (splitted.get(prioPosition).equalsIgnoreCase("%"))
-                tempSum = modulus(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-
-            splitted.remove(prioPosition + 1);
-
-            if (convertStringToDouble(splitted.get(prioPosition)) == null)
-                splitted.remove(prioPosition.intValue());
-            else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
-                splitted.set(prioPosition, "+");
-            splitted.set(prioPosition - 1, tempSum.toString());
+                if (convertStringToDouble(splitted.get(prioPosition)) == null)
+                    splitted.remove(prioPosition.intValue());
+                else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
+                    splitted.set(prioPosition, "+");
+                splitted.set(prioPosition - 1, tempSum.toString());
+            }
         }
         return splitted;
     }
