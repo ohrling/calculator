@@ -261,10 +261,16 @@ public class CalculatorTests {
         assertEquals("6.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_AdditionParenthesis_Test() {
-        fail("3+(3+4)");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3+(3+4)");
+
+        // Assert
+        assertEquals("10", actual);
     }
 
     @Ignore
