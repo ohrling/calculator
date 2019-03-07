@@ -9,15 +9,25 @@ public class Calculator {
         Double sum = null;
         Double d2 = null;
         char term = '!';
-        int multiplicationPosition = -1;
         String regex = "(?<=[-+*/%])|(?=[-+*/%])";
         List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
-        if(expression.contains("*")) {
-            multiplicationPosition = splitted.indexOf("*");
-            Double tempSum = multiplication(convertStringToDouble(splitted.get(multiplicationPosition - 1)), convertStringToDouble(splitted.get(multiplicationPosition + 1)));
-            splitted.remove(multiplicationPosition + 1);
-            splitted.remove( multiplicationPosition);
-            splitted.set(multiplicationPosition - 1, tempSum.toString());
+        List<Integer> prioPositions = new ArrayList<>();
+        for (String split :
+                splitted) {
+            if (split.equalsIgnoreCase("*") || split.equalsIgnoreCase("/"))
+                prioPositions.add(splitted.indexOf(split));
+        }
+        for (int position :
+                prioPositions) {
+            Double tempSum = null;
+            if(splitted.get(position).contains("*"))
+                tempSum = multiplication(convertStringToDouble(splitted.get(position - 1)), convertStringToDouble(splitted.get(position + 1)));
+            else if (splitted.get(position).contains("/"))
+                tempSum = division(convertStringToDouble(splitted.get(position - 1)), convertStringToDouble(splitted.get(position + 1)));
+            splitted.remove(position + 1);
+            splitted.remove( position);
+            splitted.set(position - 1, tempSum.toString());
+
         }
         for (int i = 0; i < splitted.size(); i++) {
             if(sum == null)
