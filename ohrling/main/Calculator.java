@@ -9,10 +9,10 @@ public class Calculator {
         Double sum = null;
         Double d2 = null;
         char term = '!';
-        String[] prioritizedTerms = new String[] {"*", "/"};
+        String[] prioritizedTerms = new String[] {"*", "/", "%"};
         String regex = "(?<=[-+*/%])|(?=[-+*/%])";
         List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
-        if(splitted.contains("*") || splitted.contains("/")) {
+        if(splitted.contains("*") || splitted.contains("/") || splitted.contains("%")) {
             while (splitted.size() > 3) {
                 Integer prioPosition = null;
                 Double tempSum = null;
@@ -28,6 +28,8 @@ public class Calculator {
                     tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
                 else if (splitted.get(prioPosition).equalsIgnoreCase("/"))
                     tempSum = division(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
+                else if (splitted.get(prioPosition).equalsIgnoreCase("%"))
+                    tempSum = modulus(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
 
                 splitted.remove(prioPosition + 1);
 
