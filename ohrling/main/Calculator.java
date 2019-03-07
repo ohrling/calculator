@@ -37,7 +37,15 @@ public class Calculator {
             }
         } else if(s.contains("/")) {
             splitted = s.split("([/])");
-            sum = division(convertStringToDouble(splitted[0]), convertStringToDouble(splitted[1]));
+            for(int i = 0; i < splitted.length; i++){
+                if(!splitted[i].equalsIgnoreCase("/")) {
+                    if(i == 0) {
+                        sum = convertStringToDouble(splitted[i]);
+                    } else {
+                        sum = division(sum, convertStringToDouble(splitted[i]));
+                    }
+                }
+            }
         } else {
             sum = convertStringToDouble(s);
         }
