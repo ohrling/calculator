@@ -239,9 +239,29 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_DivisionMultiplication_Test() {
-        fail("4/2*3");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4/2*3");
+
+        // Assert
+        assertEquals("6.0", actual);
     }
 
+    @Test
+    public void calculateExpression_AdditionModulus_Test() {
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4+2%3");
+
+        // Assert
+        assertEquals("6.0", actual);
+    }
+
+    @Ignore
     @Test
     public void calculateExpression_AdditionParenthesis_Test() {
         fail("3+(3+4)");
