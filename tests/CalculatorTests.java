@@ -273,7 +273,6 @@ public class CalculatorTests {
         assertEquals("10.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_SubtractionParenthesis_Test() {
         fail("4-(2+1)");
