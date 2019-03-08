@@ -275,7 +275,14 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_SubtractionParenthesis_Test() {
-        fail("4-(2+1)");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("4-(2+1)");
+
+        // Assert
+        assertEquals("1.0", actual);
     }
 
     @Ignore
