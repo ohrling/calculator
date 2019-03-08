@@ -60,20 +60,10 @@ public class Calculator {
             Integer parenthesisStartPosition = null;
             Integer parenthesisEndPosition = null;
 
-            for (String tempTerm :
-                    prioritizedTerms) {
-                if(tempTerm.equalsIgnoreCase("("))
-                    parenthesisStartPosition = splitted.indexOf(tempTerm);
-                else if(tempTerm.equalsIgnoreCase(")"))
-                    parenthesisEndPosition = splitted.indexOf(tempTerm);
-                else {
-                    if (prioPosition == null)
-                        prioPosition = splitted.indexOf(tempTerm);
-                    else if (prioPosition > splitted.indexOf(tempTerm) && splitted.indexOf(tempTerm) != -1 || prioPosition == -1)
-                        prioPosition = splitted.indexOf(tempTerm);
-                }
-            }
-            if((prioPosition == null || prioPosition == -1) && (parenthesisStartPosition != null && parenthesisEndPosition != null)) {
+            if(splitted.contains("(")) {
+                parenthesisStartPosition = splitted.indexOf("(");
+                parenthesisEndPosition = splitted.indexOf(")");
+
                 parenthesisExpression.addAll(splitted.subList(parenthesisStartPosition + 1,parenthesisEndPosition));
                 StringBuilder generatedExpression = new StringBuilder();
                 for (String s :
@@ -83,7 +73,18 @@ public class Calculator {
                 String parenthesisSum = calculateExpression(generatedExpression.toString());
                 splitted.set(parenthesisStartPosition, parenthesisSum);
                 splitted.subList(parenthesisStartPosition + 1, parenthesisEndPosition + 1).clear();
-            } else if(prioPosition != null || !(prioPosition == -1)){
+
+            }
+            for (String tempTerm :
+                    prioritizedTerms) {
+             if(splitted.contains(tempTerm)) {
+                    if (prioPosition == null)
+                        prioPosition = splitted.indexOf(tempTerm);
+                    else if (prioPosition > splitted.indexOf(tempTerm) && splitted.indexOf(tempTerm) != -1 || prioPosition == -1)
+                        prioPosition = splitted.indexOf(tempTerm);
+                }
+            }
+            if(prioPosition != null){
                 if (splitted.get(prioPosition).equalsIgnoreCase("*"))
                     tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
                 else if (splitted.get(prioPosition).equalsIgnoreCase("/"))

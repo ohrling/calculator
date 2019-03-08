@@ -285,6 +285,7 @@ public class CalculatorTests {
         assertEquals("1.0", actual);
     }
 
+    @Ignore
     @Test
     public void calculateExpression_DivisionParenthesis_Test() {
         // Arrange
