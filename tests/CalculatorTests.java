@@ -285,10 +285,16 @@ public class CalculatorTests {
         assertEquals("1.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_DivisionParenthesis_Test() {
-        fail("6/(4-2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("6/(4-2)");
+
+        // Assert
+        assertEquals("3.0", actual);
     }
 
     @Ignore
