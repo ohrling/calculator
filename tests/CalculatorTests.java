@@ -299,7 +299,13 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_MultiplicationParenthesis_Test() {
-        fail("2*(3-1)");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("2*(3-1)");
+
+        assertEquals("4.0", actual);
     }
 
     @Ignore
