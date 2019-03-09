@@ -64,6 +64,12 @@ public class Calculator {
                 parenthesisStartPosition = splitted.indexOf("(");
                 parenthesisEndPosition = splitted.indexOf(")");
 
+                if(convertStringToDouble(splitted.get(parenthesisStartPosition - 1)) != null) {
+                    splitted.add(parenthesisStartPosition, "*");
+                    parenthesisStartPosition += 1;
+                    parenthesisEndPosition += 1;
+                }
+
                 parenthesisExpression.addAll(splitted.subList(parenthesisStartPosition + 1,parenthesisEndPosition));
                 StringBuilder generatedExpression = new StringBuilder();
                 for (String s :
@@ -126,7 +132,6 @@ public class Calculator {
     public double modulus(double d1, double d2) {
         return d1%d2;
     }
-
 
     public Double convertStringToDouble(String s) {
         try {
