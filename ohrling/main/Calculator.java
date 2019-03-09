@@ -60,14 +60,21 @@ public class Calculator {
             Integer parenthesisStartPosition = null;
             Integer parenthesisEndPosition = null;
 
-            if(splitted.contains("(")) {
+            while(splitted.contains("(")) {
                 parenthesisStartPosition = splitted.indexOf("(");
                 parenthesisEndPosition = splitted.indexOf(")");
 
-                if(convertStringToDouble(splitted.get(parenthesisStartPosition - 1)) != null) {
+                if(parenthesisStartPosition != 0 && (convertStringToDouble(splitted.get(parenthesisStartPosition - 1)) != null)) {
                     splitted.add(parenthesisStartPosition, "*");
                     parenthesisStartPosition += 1;
                     parenthesisEndPosition += 1;
+                } else if(parenthesisStartPosition == 0) {
+                    for (int i = parenthesisStartPosition + 1; i < splitted.size(); i++) {
+                        if(splitted.get(i).equals("(")) {
+                            splitted.add(i, "*");
+                            i++;
+                        }
+                    }
                 }
 
                 parenthesisExpression.addAll(splitted.subList(parenthesisStartPosition + 1,parenthesisEndPosition));
@@ -79,7 +86,7 @@ public class Calculator {
                 String parenthesisSum = calculateExpression(generatedExpression.toString());
                 splitted.set(parenthesisStartPosition, parenthesisSum);
                 splitted.subList(parenthesisStartPosition + 1, parenthesisEndPosition + 1).clear();
-
+                parenthesisExpression.clear();
             }
             for (String tempTerm :
                     prioritizedTerms) {
