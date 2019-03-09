@@ -342,7 +342,14 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_LongCalculation_Test() {
-        fail("3+4(4/2)/2");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3+4(4/2)/2");
+
+        // Assert
+        assertEquals("7.0", actual);
     }
 
     @Ignore
