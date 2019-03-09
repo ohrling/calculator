@@ -305,13 +305,20 @@ public class CalculatorTests {
         // Act
         String actual = calc.calculateExpression("2*(3-1)");
 
+        // Assert
         assertEquals("4.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_numberParenthesis_Test() {
-        fail("2(3-1)");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("2(3-1)");
+
+        // Assert
+        assertEquals("4.0", actual);
     }
 
     @Ignore
