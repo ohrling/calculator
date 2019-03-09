@@ -321,10 +321,16 @@ public class CalculatorTests {
         assertEquals("4.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_ParenthesisParenthesis_Test() {
-        fail("(4-3)(5+10)");
+        // Arrange
+        Calculator  calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("(4-3)(5+10)");
+
+        // Assert
+        assertEquals("15.0", actual);
     }
 
     // Limit tests
