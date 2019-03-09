@@ -340,7 +340,6 @@ public class CalculatorTests {
         fail();
     }
 
-    @Ignore
     @Test
     public void calculateExpression_LongCalculation_Test() {
         fail("3+4(4/2)/2");
