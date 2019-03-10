@@ -352,7 +352,6 @@ public class CalculatorTests {
         assertEquals("7.0", actual);
     }
 
-    @Ignore
     @Test
     public void calculateExpression_InfiniteResult_Test() {
         fail("10/3");
