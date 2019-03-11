@@ -334,10 +334,14 @@ public class CalculatorTests {
     }
 
     // Limit tests
-    @Ignore
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void calculateExpression_MaxDoubleLength_Test() {
-        fail();
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        Double toLargeNumber = (Double.MAX_VALUE + 1);
+        calc.calculateExpression(toLargeNumber.toString());
     }
 
     @Test
