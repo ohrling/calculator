@@ -84,11 +84,6 @@ public class Calculator {
                 }
 
                 parenthesisExpression.addAll(splitted.subList(parenthesisStartPosition + 1,parenthesisEndPosition));
-                StringBuilder generatedExpression = new StringBuilder();
-                for (String s :
-                        parenthesisExpression) {
-                    generatedExpression.append(s);
-                }
                 String parenthesisSum = executeExpression(parenthesisExpression).toString();
                 splitted.set(parenthesisStartPosition, parenthesisSum);
                 splitted.subList(parenthesisStartPosition + 1, parenthesisEndPosition + 1).clear();
