@@ -354,7 +354,14 @@ public class CalculatorTests {
 
     @Test
     public void calculateExpression_InfiniteResult_Test() {
-        fail("10/3");
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("10/3");
+
+        // Assert
+        assertEquals("3.33333333", actual);
     }
 
 

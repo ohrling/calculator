@@ -13,7 +13,13 @@ public class Calculator {
             splitted = calculatePrioritizedExpressions(splitted);
         }
         sum = executeExpression(splitted);
-        return sum.toString();
+
+        if(sum.toString().length() > 9) {
+            String shortenedSum = String.format("%.8f", sum);
+            return shortenedSum.replace(',', '.');
+        } else{
+            return sum.toString();
+        }
     }
 
     private Double executeExpression(List<String> splitted) {
@@ -83,7 +89,7 @@ public class Calculator {
                         parenthesisExpression) {
                     generatedExpression.append(s);
                 }
-                String parenthesisSum = calculateExpression(generatedExpression.toString());
+                String parenthesisSum = executeExpression(parenthesisExpression).toString();
                 splitted.set(parenthesisStartPosition, parenthesisSum);
                 splitted.subList(parenthesisStartPosition + 1, parenthesisEndPosition + 1).clear();
                 parenthesisExpression.clear();
