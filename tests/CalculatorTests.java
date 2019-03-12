@@ -333,6 +333,17 @@ public class CalculatorTests {
         assertEquals("15.0", actual);
     }
 
+    @Test
+    public void calculateExpression_TwoSubtractions_Test() {
+        // Assert
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("5--5");
+
+        // Assert
+        assertEquals("10.0", actual);
+    }
     // Limit tests
     @Test(expected = RuntimeException.class)
     public void calculateExpression_MaxDoubleLength_Test() {
