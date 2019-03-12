@@ -8,10 +8,14 @@ public class Calculator {
     public String calculateExpression(String expression) {
         Double sum;
         String regex = "(?<=[-+*/%()])|(?=[-+*/%()])";
+        if(expression.equals("Infinity")) {
+            throw new RuntimeException("För stort värde!");
+        }
         List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
         if(expression.contains("*") || expression.contains("/") || expression.contains("%") || (expression.contains("(") && expression.contains(")"))) {
             splitted = calculatePrioritizedExpressions(splitted);
         }
+
         sum = executeExpression(splitted);
 
         if(sum.toString().length() > 9) {
