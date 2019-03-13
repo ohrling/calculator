@@ -1,10 +1,9 @@
 
 import main.Calculator;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-public class CalculatorTests {
+public class CalculatorExpressionTests {
     // Tests for the calculateExpression method
     @Test
     public void calculateExpression_StringToDouble_Test() {
@@ -344,126 +343,7 @@ public class CalculatorTests {
         // Assert
         assertEquals("10.0", actual);
     }
-    // Limit tests
-    @Test(expected = RuntimeException.class)
-    public void calculateExpression_MaxDoubleLength_Test() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        double toLargeNumber = 1e308;
-        calc.calculateExpression(String.valueOf(toLargeNumber * 10));
-    }
-
-    @Test
-    public void calculateExpression_LongCalculation_Test() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        String actual = calc.calculateExpression("3+4(4/2)/2");
-
-        // Assert
-        assertEquals("7.0", actual);
-    }
-
-    @Test
-    public void calculateExpression_InfiniteResult_Test() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        String actual = calc.calculateExpression("10/3");
-
-        // Assert
-        assertEquals("3.33333333", actual);
-    }
 
 
-    // Tests for the separate math-methods
-    @Test
-    public void additionTest() {
-        // Arrange
-        Calculator calc = new Calculator();
 
-        // Act
-        double actual = calc.addition(3.0,4.0);
-
-        // Assert
-        assertEquals(7d,actual,0.111);
-    }
-
-    @Test
-    public void subtractionTest() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        double actual = calc.subtraction(4.0, 3.0);
-
-        // Assert
-        assertEquals(1d, actual, 0.111);
-    }
-
-    @Test
-    public void multiplicationTest() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        double actual = calc.multiplication(4.0, 3.0);
-
-        // Assert
-        assertEquals(12d, actual, 0.111);
-    }
-
-    @Test
-    public void divisionTest() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        double actual = calc.division(4.0, 2.0);
-
-        // Assert
-        assertEquals(2d, actual, 0.111);
-    }
-
-    @Test
-    public void modulusTest() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        double actual = calc.modulus(9.0, 2.0);
-
-        // Assert
-        assertEquals(1d, actual, 0.111);
-    }
-
-    // Exception tests
-    @Test(expected = ArithmeticException.class)
-    public void divisionZeroTest() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        double actual = calc.division(4.0,0.0);
-
-        // Assert
-        assertEquals(3d,actual, 0.111);
-    }
-
-    // Test for converting
-    @Test(expected = NullPointerException.class)
-    public void convertStringToDouble_Test() {
-        // Arrange
-        Calculator calc = new Calculator();
-
-        // Act
-        Double actual = calc.convertStringToDouble("h");
-
-        // Assert
-        assertEquals(3d, actual, 0.111);
-    }
 }
