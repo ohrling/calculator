@@ -13,11 +13,16 @@ public class SpecificationTests {
     }
 
     @Test
-    public void LongCalculation() {
+    public void specificationOne_LongExpression_ReturnsString() {
         // Act
         String actual = calc.calculateExpression("5*4+7-3*0+4-10");
 
         // Assert
         assertEquals("21.0", actual);
+    }
+
+    @Test
+    public void specificationTwo_ShortExpression_ReturnsString() {
+        fail();
     }
 }
