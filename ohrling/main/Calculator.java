@@ -70,7 +70,7 @@ public class Calculator {
     private List<String> calculatePrioritizedExpressions(List<String> splitted) {
         String[] prioritizedTerms = new String[] {"*", "/", "%", "(", ")"};
         List<String> parenthesisExpression = new ArrayList<>();
-        while (splitted.size() > 3) {
+        while (true) {
             Integer prioPosition = null;
             Double tempSum = null;
             Integer parenthesisStartPosition = null;
@@ -122,6 +122,8 @@ public class Calculator {
                 else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
                     splitted.set(prioPosition, "+");
                 splitted.set(prioPosition - 1, tempSum.toString());
+            } else {
+                break;
             }
         }
         return splitted;
