@@ -31,12 +31,17 @@ public class Calculator {
         Double d2 = null;
         char term = '!';
         for (int i = 0; i < splitted.size(); i++) {
+            if(splitted.get(i).equals("-") && splitted.get(i+1).equals("-")) {
+                splitted.set(i, "+");
+                splitted.remove(i+1);
+            }
             if(sum == null)
                 sum = convertStringToDouble(splitted.get(i));
             else if(d2 == null)
                 d2 = convertStringToDouble(splitted.get(i));
-            if(sum == null || d2 == null)
+            if(sum == null || d2 == null) {
                 term = splitted.get(i).charAt(0);
+            }
             if(sum != null && d2 != null && term != '!') {
                 switch (term) {
                     case '+':
@@ -58,6 +63,7 @@ public class Calculator {
                 d2 = null;
             }
         }
+        term = '!';
         return sum;
     }
 
