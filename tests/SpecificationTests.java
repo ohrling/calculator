@@ -74,4 +74,12 @@ public class SpecificationTests {
 
         // Assert
     }
+
+    @Test
+    public void specificationEight_WrongInputsLetters_ReturnsException() {
+        // Act
+        String actual = calc.calculateExpression("sdf");
+
+        // Assert
+    }
 }
