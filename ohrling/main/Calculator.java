@@ -14,6 +14,7 @@ public class Calculator {
         if(expression.equals("Infinity")) {
             throw new RuntimeException("För stort värde!");
         }
+        expression = expression.replace(',', '.');
         List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(REGEX)));
         if (splitted.get(0).equals("+") || splitted.get(0).equals("-") || splitted.get(0).equals("*") || splitted.get(0).equals("/") || splitted.get(0).equals("%"))
             throw new NumberFormatException("Felaktigt värde");
@@ -25,7 +26,9 @@ public class Calculator {
 
         if(sum.toString().length() > 9) {
             String shortenedSum = String.format("%.8f", sum);
-            return shortenedSum.replace(',', '.');
+            shortenedSum = shortenedSum.replace(',', '.');
+            shortenedSum = removeZeros(Double.parseDouble(shortenedSum));
+            return shortenedSum;
         } else{
             return sum.toString();
         }
@@ -175,5 +178,9 @@ public class Calculator {
             throw new NullPointerException("Felaktigt värde");
         }
         return true;
+    }
+
+    private static String removeZeros(double d) {
+        return String.valueOf(d).replaceAll("[0]*$", "").replaceAll("\\.$", "");
     }
 }

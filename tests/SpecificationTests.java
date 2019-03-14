@@ -41,6 +41,7 @@ public class SpecificationTests {
         assertEquals("21.0", actual);
     }
 
+    // Och även denna!?
     @Test
     public void specificationFour_AdditionDivisionAndMultiplication_ReturnsStringConvertedDoubleOf11() {
         // Act
