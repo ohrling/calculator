@@ -6,15 +6,26 @@ import static org.junit.Assert.*;
 public class CalculatorExpressionTests {
     // Tests for the calculateExpression method
     @Test
+    public void inputWithDecimals_ReturnsMathResult() {
+        // Arrange
+        Calculator calc = new Calculator();
+
+        // Act
+        String actual = calc.calculateExpression("3,4+2,8");
+
+        // Assert
+        assertEquals("6.2", actual);
+    }
+    @Test
     public void calculateExpression_StringToDouble_Test() {
         // Arrange
         Calculator calc = new Calculator();
 
         // Act
-        String acutal = calc.calculateExpression("3");
+        String actual = calc.calculateExpression("3");
 
         // Assert
-        assertEquals("3.0", acutal);
+        assertEquals("3.0", actual);
     }
 
     @Test
