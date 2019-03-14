@@ -66,4 +66,12 @@ public class SpecificationTests {
         // Assert
         assertEquals("", actual);
     }
+
+    @Test
+    public void specificationSeven_WrongInputsDoubleSpace_ReturnsException() {
+        // Act
+        String actual = calc.calculateExpression("3  4");
+
+        // Assert
+    }
 }
