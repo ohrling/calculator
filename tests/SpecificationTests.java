@@ -70,7 +70,7 @@ public class SpecificationTests {
         String actual = calc.calculateExpression("3  4");
     }
 
-    @Test
+    @Test (expected = NumberFormatException.class)
     public void specificationEight_WrongInputsLetters_ReturnsException() {
         // Act
         String actual = calc.calculateExpression("sdf");
