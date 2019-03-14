@@ -42,6 +42,11 @@ public class SpecificationTests {
     @Test
     public void specificationFour_AdditionDivisionAndMultiplication_ReturnsStringConvertedDoubleOf11() {
         // Act
-        fail();
+        String actual = calc.calculateExpression("5+6/2*2");
+
+        // Assert
+        assertEquals("11.0", actual);
     }
+
+
 }
