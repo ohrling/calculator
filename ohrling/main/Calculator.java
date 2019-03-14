@@ -15,6 +15,8 @@ public class Calculator {
             throw new RuntimeException("För stort värde!");
         }
         List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(REGEX)));
+        if (splitted.get(0).equals("+") || splitted.get(0).equals("-") || splitted.get(0).equals("*") || splitted.get(0).equals("/") || splitted.get(0).equals("%"))
+            throw new NumberFormatException("Felaktigt värde");
         if((splitted.size() > 3) &&(expression.contains("*") || expression.contains("/") || expression.contains("%") || (expression.contains("(") && expression.contains(")")))) {
             splitted = calculatePrioritizedExpressions(splitted);
         }
