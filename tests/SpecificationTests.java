@@ -13,7 +13,7 @@ public class SpecificationTests {
     }
 
     @Test
-    public void specificationOne_LongExpression_ReturnsString() {
+    public void specificationOne_LongExpression_ReturnsStringConvertedDoubleOf21() {
         // Act
         String actual = calc.calculateExpression("5*4+7-3*0+4-10");
 
@@ -22,11 +22,17 @@ public class SpecificationTests {
     }
 
     @Test
-    public void specificationTwo_ShortExpression_ReturnsString() {
+    public void specificationTwo_ShortExpression_ReturnsStringConvertedDoubleOf32dot5() {
         // Act
         String actual = calc.calculateExpression("7*4+6-3/2");
 
         // Assert
         assertEquals("32.5", actual);
+    }
+
+    @Test
+    public void specificationThree_MultiplicationAndDivision_ReturnsStringConvertedDoubleOf21() {
+        // Act
+        fail();
     }
 }
