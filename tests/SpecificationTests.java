@@ -50,11 +50,16 @@ public class SpecificationTests {
     }
 
     @Test (expected = NumberFormatException.class)
-    public void specificationFive_WrongInputs_ReturnsException() {
+    public void specificationFive_WrongInputsDoubleTermAndLetter_ReturnsException() {
         // Act
         String actual = calc.calculateExpression("5++p");
 
         // Assert
         assertEquals("11.0", actual);
+    }
+
+    @Test (expected = NumberFormatException.class)
+    public void specificationSix_WrongInputsDoubleTerm_ReturnsException() {
+        fail();
     }
 }
