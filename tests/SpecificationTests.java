@@ -67,7 +67,7 @@ public class SpecificationTests {
         assertEquals("", actual);
     }
 
-    @Test
+    @Test (expected = NumberFormatException.class)
     public void specificationSeven_WrongInputsDoubleSpace_ReturnsException() {
         // Act
         String actual = calc.calculateExpression("3  4");
