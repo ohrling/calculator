@@ -33,6 +33,11 @@ public class SpecificationTests {
     @Test
     public void specificationThree_MultiplicationAndDivision_ReturnsStringConvertedDoubleOf21() {
         // Act
-        fail();
+        String actual = calc.calculateExpression("7*6/2");
+
+        // Assert
+        assertEquals("21.0", actual);
     }
+
+
 }
