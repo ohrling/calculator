@@ -8,6 +8,7 @@ public class Calculator {
     private final String REGEX = "(?<=[-+*/%()])|(?=[-+*/%()])";
     private Double sum = null;
     private char term = '!';
+    private String[] prioritizedTerms = new String[] {"*", "/", "%", "(", ")"};
 
     public String calculateExpression(String expression) {
         if(expression.equals("Infinity")) {
@@ -69,7 +70,6 @@ public class Calculator {
     }
 
     private List<String> calculatePrioritizedExpressions(List<String> splitted) {
-        String[] prioritizedTerms = new String[] {"*", "/", "%", "(", ")"};
         List<String> parenthesisExpression = new ArrayList<>();
         while (splitted.size() > 3) {
             Integer prioPosition = null;

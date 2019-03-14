@@ -31,6 +31,7 @@ public class SpecificationTests {
         assertEquals("32.5", actual);
     }
 
+    // Varför ger denna fel emellanåt?
     @Test
     public void specificationThree_MultiplicationAndDivision_ReturnsStringConvertedDoubleOf21() {
         // Act
@@ -75,4 +76,14 @@ public class SpecificationTests {
         // Act
         String actual = calc.calculateExpression("sdf");
     }
+
+    @Test (expected = NumberFormatException.class)
+    public void specificationNine_WrongInputsStartsWithTerm_ReturnsException() {
+        // Act
+        String actual = calc.calculateExpression("*3");
+
+        // Assert
+        assertEquals("0.0", actual);
+    }
+
 }
