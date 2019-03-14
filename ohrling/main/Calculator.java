@@ -62,9 +62,9 @@ public class Calculator {
                         break;
                 }
                 d2 = null;
+                term = '!';
             }
         }
-        term = '!';
         return sum;
     }
 
@@ -93,6 +93,7 @@ public class Calculator {
                         }
                     }
                 }
+                term = '!';
 
                 parenthesisExpression.addAll(splitted.subList(parenthesisStartPosition + 1,parenthesisEndPosition));
                 String parenthesisSum = executeExpression(parenthesisExpression).toString();
@@ -114,15 +115,17 @@ public class Calculator {
                     tempSum = calculateExpression(splitted.get(prioPosition - 1) + splitted.get(prioPosition) +  splitted.get(prioPosition + 1));
                     splitted.remove(prioPosition + 1);
                 }
-                if (!checkString(splitted.get(prioPosition)))
+                if (!checkString(splitted.get(prioPosition))) {
                     splitted.remove(prioPosition.intValue());
-                else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
+                    term = '!';
+                } else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
                     splitted.set(prioPosition, "+");
                 splitted.set(prioPosition - 1, tempSum.toString());
             } else {
                 break;
             }
         }
+        term = '!';
         return splitted;
     }
 
@@ -155,10 +158,17 @@ public class Calculator {
             Double.parseDouble(s);
         } catch (NumberFormatException e) {
             if(s.equals("-") || s.equals("+") || s.equals("*") || s.equals("/") || s.equals("%")) {
-                term = s.charAt(0);
+                if(term == '!' || term != s.charAt(0)) {
+                    term = s.charAt(0);
+                    return false;
+                } else {
+                    throw new NumberFormatException("Felaktigt värde");
+                }
+            } else if(s.equals("(") || s.equals(")")) {
                 return false;
+            } else {
+                throw new NumberFormatException("Felaktigt värde");
             }
-            throw new NumberFormatException("Felaktigt värde");
         } catch (NullPointerException e) {
             throw new NullPointerException("Felaktigt värde");
         }

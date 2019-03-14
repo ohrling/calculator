@@ -60,6 +60,10 @@ public class SpecificationTests {
 
     @Test (expected = NumberFormatException.class)
     public void specificationSix_WrongInputsDoubleTerm_ReturnsException() {
-        fail();
+        // Act
+        String actual = calc.calculateExpression("5++4");
+
+        // Assert
+        assertEquals("", actual);
     }
 }
