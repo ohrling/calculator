@@ -62,24 +62,17 @@ public class SpecificationTests {
     public void specificationSix_WrongInputsDoubleTerm_ReturnsException() {
         // Act
         String actual = calc.calculateExpression("5++4");
-
-        // Assert
-        assertEquals("", actual);
     }
 
     @Test (expected = NumberFormatException.class)
     public void specificationSeven_WrongInputsDoubleSpace_ReturnsException() {
         // Act
         String actual = calc.calculateExpression("3  4");
-
-        // Assert
     }
 
     @Test
     public void specificationEight_WrongInputsLetters_ReturnsException() {
         // Act
         String actual = calc.calculateExpression("sdf");
-
-        // Assert
     }
 }
