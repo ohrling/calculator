@@ -86,4 +86,12 @@ public class SpecificationTests {
         assertEquals("0.0", actual);
     }
 
+    @Test
+    public void specificationTen_WrongInputsDoubleSlash_ReturnsException() {
+        // Act
+        String actual = calc.calculateExpression("0+0//");
+
+        // Assert
+        assertEquals("0.0", actual);
+    }
 }
