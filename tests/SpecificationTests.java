@@ -1,6 +1,5 @@
 import main.Calculator;
 import org.junit.BeforeClass;
-import org.junit.ComparisonFailure;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -31,7 +30,6 @@ public class SpecificationTests {
         assertEquals("32.5", actual);
     }
 
-    // Varför ger denna fel emellanåt?
     @Test
     public void specificationThree_MultiplicationAndDivision_ReturnsStringConvertedDoubleOf21() {
         // Act
@@ -41,7 +39,6 @@ public class SpecificationTests {
         assertEquals("21.0", actual);
     }
 
-    // Och även denna!?
     @Test
     public void specificationFour_AdditionDivisionAndMultiplication_ReturnsStringConvertedDoubleOf11() {
         // Act

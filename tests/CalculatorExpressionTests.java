@@ -17,7 +17,7 @@ public class CalculatorExpressionTests {
         assertEquals("6.2", actual);
     }
     @Test
-    public void calculateExpression_StringToDouble_Test() {
+    public void inputSingleNumber_ReturnsDoubleString() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -29,7 +29,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_SingleAddition_Test() {
+    public void inputSingleAddition_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -41,7 +41,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiAddition_Test() {
+    public void inputMultipleAdditions_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -53,7 +53,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_SingleSubtraction_Test() {
+    public void inputSingleSubtraction_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -65,7 +65,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiSubtraction_Test() {
+    public void inputMultipleSubtractions_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -77,7 +77,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_SingleMultiplication_Test() {
+    public void inputSingleMultiplication_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -89,7 +89,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiMultiplication_Test() {
+    public void inputMultipleMultiplication_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -101,7 +101,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_SingleDivision_Test() {
+    public void inputSingleDivision_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -113,7 +113,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiDivision_Test() {
+    public void inputMultipleDivision_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -125,7 +125,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_SingleModulus_Test() {
+    public void inputSingleModulus_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -137,7 +137,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiModulus_Test() {
+    public void inputMultipleModulus_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -149,7 +149,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_AdditionSubtraction_Test() {
+    public void inputAdditionAndSubtraction_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -161,7 +161,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiplicationAddition_Test() {
+    public void inputMultiplicationAndAddition_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -173,7 +173,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_AdditionMultiplication_Test() {
+    public void inputAdditionAndMultiplication_ReturnsStringWithDoubleAnswer() {
         // Remember Multiplication goes first!
         // Arrange
         Calculator calc = new Calculator();
@@ -186,7 +186,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiplicationSubtraction_Test() {
+    public void inputMultiplicationAndSubtraction_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -198,7 +198,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_SubtractionMultiplication_Test() {
+    public void inputSubtractionAndMultiplication_ReturnsStringWithDoubleAnswer() {
         // Remember Multiplication goes first!
         // Arrange
         Calculator calc = new Calculator();
@@ -211,7 +211,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_DivisionAddition_Test() {
+    public void inputDivisionAndAddition_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -223,7 +223,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_AdditionDivision_Test() {
+    public void inputAdditionAndDivision_ReturnsStringWithDoubleAnswer() {
         // Remember division calculates first!
         // Arrange
         Calculator calc = new Calculator();
@@ -236,7 +236,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiplicationDivision_Test() {
+    public void inputMultiplicationAndDivision_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -248,7 +248,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_DivisionMultiplication_Test() {
+    public void inputDivisionAndMultiplication_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -260,7 +260,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_AdditionModulus_Test() {
+    public void inputAdditionAndModulus_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -272,7 +272,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_AdditionParenthesis_Test() {
+    public void inputAdditionAndParenthesis_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -284,7 +284,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_SubtractionParenthesis_Test() {
+    public void inputSubtractionAndParenthesis_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -296,7 +296,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_DivisionParenthesis_Test() {
+    public void inputDivisionAndParenthesis_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -308,7 +308,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_MultiplicationParenthesis_Test() {
+    public void inputMultiplicationAndParenthesis_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -320,7 +320,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_numberParenthesis_Test() {
+    public void inputNumberAndParenthesis_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -332,7 +332,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_ParenthesisParenthesis_Test() {
+    public void inputParenthesisAndParenthesis_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator  calc = new Calculator();
 
@@ -344,7 +344,7 @@ public class CalculatorExpressionTests {
     }
 
     @Test
-    public void calculateExpression_TwoSubtractions_Test() {
+    public void inputDoubleSubtractions_ReturnsStringWithDoubleAnswerAfterConvertedToAddition() {
         // Assert
         Calculator calc = new Calculator();
 

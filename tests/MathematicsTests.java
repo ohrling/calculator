@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class MathematicsTests {
     // Tests for the separate math-methods
     @Test
-    public void additionTest() {
+    public void additionTest_ReturnsDouble() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -18,7 +18,7 @@ public class MathematicsTests {
     }
 
     @Test
-    public void subtractionTest() {
+    public void subtractionTest_ReturnsDouble() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -30,7 +30,7 @@ public class MathematicsTests {
     }
 
     @Test
-    public void multiplicationTest() {
+    public void multiplicationTest_ReturnsDouble() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -42,7 +42,7 @@ public class MathematicsTests {
     }
 
     @Test
-    public void divisionTest() {
+    public void divisionTest_ReturnsDouble() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -54,7 +54,7 @@ public class MathematicsTests {
     }
 
     @Test
-    public void modulusTest() {
+    public void modulusTest_ReturnsDouble() {
         // Arrange
         Calculator calc = new Calculator();
 

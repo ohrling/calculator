@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class LimitTests {
     // Limit tests
     @Test(expected = RuntimeException.class)
-    public void calculateExpression_MaxDoubleLength_Test() {
+    public void inputTooLargeNumber_ReturnsException() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -16,7 +16,7 @@ public class LimitTests {
     }
 
     @Test
-    public void calculateExpression_LongCalculation_Test() {
+    public void inputLongCalculation_ReturnsStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
@@ -28,7 +28,7 @@ public class LimitTests {
     }
 
     @Test
-    public void calculateExpression_InfiniteResult_Test() {
+    public void inputDivisionResultsInInfiteAnswer_ReturnsTrimmedStringWithDoubleAnswer() {
         // Arrange
         Calculator calc = new Calculator();
 
