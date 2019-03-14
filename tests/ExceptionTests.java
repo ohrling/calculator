@@ -1,7 +1,7 @@
 import main.Calculator;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ExceptionTests {
     // Exception tests
@@ -18,15 +18,12 @@ public class ExceptionTests {
     }
 
     // Test for converting
-    @Test(expected = NullPointerException.class)
-    public void convertStringToDouble_Test() {
+    @Test(expected = NumberFormatException.class)
+    public void checkIfParsedValueIsNumeric_LetterInput_False() {
         // Arrange
         Calculator calc = new Calculator();
 
         // Act
-        Double actual = calc.convertStringToDouble("h");
-
-        // Assert
-        assertEquals(3d, actual, 0.111);
+        calc.checkString("h");
     }
 }

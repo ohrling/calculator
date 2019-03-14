@@ -5,14 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Calculator {
+    private final String REGEX = "(?<=[-+*/%()])|(?=[-+*/%()])";
+    private Double sum = null;
+    private char term = '!';
+
     public String calculateExpression(String expression) {
-        Double sum;
-        String regex = "(?<=[-+*/%()])|(?=[-+*/%()])";
         if(expression.equals("Infinity")) {
             throw new RuntimeException("För stort värde!");
         }
-        List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(regex)));
-        if(expression.contains("*") || expression.contains("/") || expression.contains("%") || (expression.contains("(") && expression.contains(")"))) {
+        List<String> splitted = new ArrayList<>(Arrays.asList(expression.split(REGEX)));
+        if((splitted.size() > 3) &&(expression.contains("*") || expression.contains("/") || expression.contains("%") || (expression.contains("(") && expression.contains(")")))) {
             splitted = calculatePrioritizedExpressions(splitted);
         }
 
@@ -27,20 +29,19 @@ public class Calculator {
     }
 
     private Double executeExpression(List<String> splitted) {
-        Double sum = null;
+        sum = null;
         Double d2 = null;
-        char term = '!';
         for (int i = 0; i < splitted.size(); i++) {
-            if(splitted.get(i).equals("-") && splitted.get(i+1).equals("-")) {
+            if (splitted.get(i).equals("-") && splitted.get(i + 1).equals("-")) {
                 splitted.set(i, "+");
-                splitted.remove(i+1);
+                splitted.remove(i + 1);
             }
-            if(sum == null)
-                sum = convertStringToDouble(splitted.get(i));
-            else if(d2 == null)
-                d2 = convertStringToDouble(splitted.get(i));
-            if(sum == null || d2 == null) {
-                term = splitted.get(i).charAt(0);
+            if (checkString(splitted.get(i))) {
+                if (sum == null) {
+                    sum = Double.parseDouble(splitted.get(i));
+                } else if (d2 == null) {
+                    d2 = Double.parseDouble(splitted.get(i));
+                }
             }
             if(sum != null && d2 != null && term != '!') {
                 switch (term) {
@@ -70,9 +71,9 @@ public class Calculator {
     private List<String> calculatePrioritizedExpressions(List<String> splitted) {
         String[] prioritizedTerms = new String[] {"*", "/", "%", "(", ")"};
         List<String> parenthesisExpression = new ArrayList<>();
-        while (true) {
+        while (splitted.size() > 3) {
             Integer prioPosition = null;
-            Double tempSum = null;
+            String tempSum = null;
             Integer parenthesisStartPosition = null;
             Integer parenthesisEndPosition = null;
 
@@ -80,7 +81,7 @@ public class Calculator {
                 parenthesisStartPosition = splitted.indexOf("(");
                 parenthesisEndPosition = splitted.indexOf(")");
 
-                if(parenthesisStartPosition != 0 && (convertStringToDouble(splitted.get(parenthesisStartPosition - 1)) != null)) {
+                if(parenthesisStartPosition != 0 && checkString(splitted.get(parenthesisStartPosition - 1))) {
                     splitted.add(parenthesisStartPosition, "*");
                     parenthesisStartPosition += 1;
                     parenthesisEndPosition += 1;
@@ -109,15 +110,11 @@ public class Calculator {
                 }
             }
             if(prioPosition != null){
-                if (splitted.get(prioPosition).equalsIgnoreCase("*"))
-                    tempSum = multiplication(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-                else if (splitted.get(prioPosition).equalsIgnoreCase("/"))
-                    tempSum = division(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-                else if (splitted.get(prioPosition).equalsIgnoreCase("%"))
-                    tempSum = modulus(convertStringToDouble(splitted.get(prioPosition - 1)), convertStringToDouble(splitted.get(prioPosition + 1)));
-                splitted.remove(prioPosition + 1);
-
-                if (convertStringToDouble(splitted.get(prioPosition)) == null)
+                if(checkString(splitted.get(prioPosition -1)) && checkString(splitted.get(prioPosition +1))) {
+                    tempSum = calculateExpression(splitted.get(prioPosition - 1) + splitted.get(prioPosition) +  splitted.get(prioPosition + 1));
+                    splitted.remove(prioPosition + 1);
+                }
+                if (!checkString(splitted.get(prioPosition)))
                     splitted.remove(prioPosition.intValue());
                 else if (!splitted.get(prioPosition - 1).equalsIgnoreCase("+") || splitted.get(prioPosition + 1).equalsIgnoreCase("+"))
                     splitted.set(prioPosition, "+");
@@ -145,7 +142,7 @@ public class Calculator {
         if(d2 != 0) {
             return d1 / d2;
         } else {
-            throw new ArithmeticException();
+            throw new ArithmeticException("Kan inte dividera med 0");
         }
     }
 
@@ -153,11 +150,18 @@ public class Calculator {
         return d1%d2;
     }
 
-    public Double convertStringToDouble(String s) {
+    public boolean checkString(String s) {
         try {
-            return Double.parseDouble(s);
+            Double.parseDouble(s);
         } catch (NumberFormatException e) {
-            return null;
+            if(s.equals("-") || s.equals("+") || s.equals("*") || s.equals("/") || s.equals("%")) {
+                term = s.charAt(0);
+                return false;
+            }
+            throw new NumberFormatException("Felaktigt värde");
+        } catch (NullPointerException e) {
+            throw new NullPointerException("Felaktigt värde");
         }
+        return true;
     }
 }

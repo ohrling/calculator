@@ -1,5 +1,6 @@
 import main.Calculator;
 import org.junit.BeforeClass;
+import org.junit.ComparisonFailure;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -48,5 +49,12 @@ public class SpecificationTests {
         assertEquals("11.0", actual);
     }
 
+    @Test (expected = NumberFormatException.class)
+    public void specificationFive_WrongInputs_ReturnsException() {
+        // Act
+        String actual = calc.calculateExpression("5++p");
 
+        // Assert
+        assertEquals("11.0", actual);
+    }
 }
